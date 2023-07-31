@@ -1,23 +1,22 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 pragma solidity >=0.8.0;
 
-import { ERC165 } from "@openzeppelin/contracts/utils/introspection/ERC165.sol";
+import { IERC165 } from "./interfaces/external/IERC165.sol";
 import { ISimulationAdapter } from "./interfaces/ISimulationAdapter.sol";
 
 /**
  * @title Simulation Adapter
  * @author Sam Bugs
  * @notice This contracts adds off-chain simulation capabilities to existing contracts. It works similarly to a
- * multicall,
- *         but the state is not modified in each subcall.
+ *         multicall, but the state is not modified in each subcall.
  */
-abstract contract SimulationAdapter is ERC165, ISimulationAdapter {
+abstract contract SimulationAdapter is IERC165, ISimulationAdapter {
   /// @notice An error that contains a simulation's result
   error SimulatedCall(SimulationResult result);
 
-  /// @inheritdoc ERC165
+  /// @inheritdoc IERC165
   function supportsInterface(bytes4 _interfaceId) public view virtual override returns (bool) {
-    return _interfaceId == type(ISimulationAdapter).interfaceId || super.supportsInterface(_interfaceId);
+    return _interfaceId == type(ISimulationAdapter).interfaceId || _interfaceId == type(IERC165).interfaceId;
   }
 
   /// @inheritdoc ISimulationAdapter

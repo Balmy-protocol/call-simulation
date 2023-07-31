@@ -4,7 +4,7 @@ pragma solidity >=0.8.0;
 import { PRBTest } from "@prb/test/PRBTest.sol";
 import { StdUtils } from "forge-std/StdUtils.sol";
 // solhint-disable-next-line no-unused-import
-import { IERC165 } from "@openzeppelin/contracts/utils/introspection/IERC165.sol";
+import { IERC165 } from "../../src/interfaces/external/IERC165.sol";
 import { SimulationAdapter, ISimulationAdapter } from "../../src/SimulationAdapter.sol";
 
 contract SimulationAdapterTest is PRBTest, StdUtils {
