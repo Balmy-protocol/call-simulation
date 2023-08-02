@@ -31,23 +31,23 @@ contract SimulationAdapterTest is PRBTest, StdUtils {
     _calls[1] = _failedCall;
     _calls[2] = _callWithValue;
 
-    ISimulationAdapter.SimulationResult[] memory _simulationResults = myContract.simulate{value: _value}(_calls);
+    ISimulationAdapter.SimulationResult[] memory _simulationResults = myContract.simulate{ value: _value }(_calls);
 
     assertEq(_simulationResults.length, 3);
 
     // First one worked
     assertTrue(_simulationResults[0].success);
-    assertEq(_simulationResults[0].result, abi.encode(_value), 'Call 1 is different');
+    assertEq(_simulationResults[0].result, abi.encode(_value), "Call 1 is different");
     assertGt(_simulationResults[0].gasSpent, 0);
 
     // Second one failed
     assertFalse(_simulationResults[1].success);
-    assertEq(_simulationResults[1].result, abi.encodeWithSelector(Failed.selector, _value), 'Call 2 is different');
+    assertEq(_simulationResults[1].result, abi.encodeWithSelector(Failed.selector, _value), "Call 2 is different");
     assertGt(_simulationResults[1].gasSpent, 0);
 
     // Third one worked
     assertTrue(_simulationResults[2].success);
-    assertEq(_simulationResults[2].result, abi.encode(_value), 'Call 3 is different');
+    assertEq(_simulationResults[2].result, abi.encode(_value), "Call 3 is different");
     assertGt(_simulationResults[2].gasSpent, 0);
 
     // Storage was not modified any of the times
