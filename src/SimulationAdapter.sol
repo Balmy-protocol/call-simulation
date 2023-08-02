@@ -51,7 +51,7 @@ abstract contract SimulationAdapter is IERC165, ISimulationAdapter {
    * @dev This is meant to be used internally, do not call!
    * @param _call The call to simulate
    */
-  function simulateAndRevert(bytes calldata _call) external {
+  function simulateAndRevert(bytes calldata _call) external payable {
     uint256 _gasAtStart = gasleft();
     // solhint-disable-next-line avoid-low-level-calls
     (bool _success, bytes memory _result) = address(this).delegatecall(_call);
