@@ -23,10 +23,10 @@ contract SimulatorTest is PRBTest, StdUtils {
     bytes memory _callWithValue = abi.encodeWithSelector(myContract.modifyStorageWithValue.selector);
     bytes memory _checkSenderCall = abi.encodeWithSelector(myContract.checkSender.selector);
     ISimulator.Call[] memory _calls = new ISimulator.Call[](4);
-    _calls[0] = ISimulator.Call({ target: address(myContract), callData: _successfulCall, value: 0});
-    _calls[1] = ISimulator.Call({ target: address(myContract), callData: _failedCall, value: 0});
-    _calls[2] = ISimulator.Call({ target: address(myContract), callData: _callWithValue, value: _value});
-    _calls[3] = ISimulator.Call({ target: address(myContract), callData: _checkSenderCall, value: 0});
+    _calls[0] = ISimulator.Call({ target: address(myContract), callData: _successfulCall, value: 0 });
+    _calls[1] = ISimulator.Call({ target: address(myContract), callData: _failedCall, value: 0 });
+    _calls[2] = ISimulator.Call({ target: address(myContract), callData: _callWithValue, value: _value });
+    _calls[3] = ISimulator.Call({ target: address(myContract), callData: _checkSenderCall, value: 0 });
 
     ISimulator.SimulationResult[] memory _simulationResults = simulator.simulate{ value: _value }(_calls);
 

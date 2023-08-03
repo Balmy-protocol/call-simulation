@@ -10,8 +10,7 @@ import { ISimulator } from "./interfaces/ISimulator.sol";
  *         multicall, but the state is not modified in each subcall.
  * @dev Please note that we are using `CALL` to execute all subcalls, so the `msg.sender` WILL change
  */
-contract Simulator is ISimulator{
-
+contract Simulator is ISimulator {
   /// @notice An error that contains a simulation's result
   error SimulatedCall(SimulationResult result);
 
@@ -50,7 +49,7 @@ contract Simulator is ISimulator{
   function simulateAndRevert(Call calldata _call) external payable {
     uint256 _gasAtStart = gasleft();
     // solhint-disable-next-line avoid-low-level-calls
-    (bool _success, bytes memory _result) = _call.target.call{value: _call.value}(_call.callData);
+    (bool _success, bytes memory _result) = _call.target.call{ value: _call.value }(_call.callData);
     uint256 _gasSpent = _gasAtStart - gasleft();
     revert SimulatedCall(SimulationResult({ success: _success, result: _result, gasSpent: _gasSpent }));
   }
