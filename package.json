@@ -1,10 +1,10 @@
 {
-  "name": "@mean-finance/call-simulation",
+  "name": "@balmy-protocol/call-simulation",
   "description": "This repository adds existing contracts the ability to perform stateless simulations",
   "version": "0.0.2",
   "author": {
-    "name": "Mean-Finance",
-    "url": "https://github.com/Mean-Finance"
+    "name": "Balmy Protocol",
+    "url": "https://github.com/Balmy-Protocol"
   },
   "devDependencies": {
     "prettier": "^2.8.7",
