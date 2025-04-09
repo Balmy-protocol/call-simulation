@@ -11,7 +11,7 @@ bytes32 constant SALT = bytes32(
 
 contract DeploySimulatorAdapter is BaseScript {
   function run() public broadcaster returns (Simulator _simulator) {
-    _simulator = new Simulator{salt: SALT}();
+    _simulator = new Simulator{ salt: SALT }();
     console2.log("Simulator Deployed:", address(_simulator));
   }
 }
